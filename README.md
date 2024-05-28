@@ -19,6 +19,8 @@ SALT_ROUNDS= hash값을 몇번 돌리실지 넣어주세요 ex)10
 
 프로젝트를 실행하기 위해 필요한 모듈을 설치해주세요
 
+npm install -g yarn
+
 yarn init -y
 
 yarn add express prisma @prisma/client cookie-parser jsonwebtoken
