@@ -159,7 +159,9 @@ router.patch(RESUME_ROUTES.UPDATE, authenticateToken, async (req, res, next) => 
     if (!title && !introduction) {
       return res.status(400).json({ message: '수정 할 정보를 입력해 주세요.' });
     }
-    if (introduction.length < MIN_INTRODUCTION_LENGTH) {
+
+    // introduction이 존재할 경우에만 길이 검증
+    if (introduction && introduction.length < MIN_INTRODUCTION_LENGTH) {
       return res.status(400).json({ message: `자기소개는 ${MIN_INTRODUCTION_LENGTH}자 이상 작성해야 합니다.` });
     }
 
@@ -201,6 +203,7 @@ router.patch(RESUME_ROUTES.UPDATE, authenticateToken, async (req, res, next) => 
     next(err); // 에러 핸들러로 에러 전달
   }
 });
+
 
 // 이력서 삭제 API
 router.delete(RESUME_ROUTES.DELETE, authenticateToken, async (req, res, next) => {
